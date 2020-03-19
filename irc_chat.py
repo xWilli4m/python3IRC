@@ -79,7 +79,6 @@ class IRC:
 	def USERNOTICE(self, msgStr):
 		pattern = re.compile(r'@(.*) :tmi.twitch.tv (.*) #(\w*)(.*)?')
 		msgList = list(re.findall(pattern, msgStr)[0])
-		print(msgList)
 		returnList = {
 			'room-name': msgList[2],
 			'msg-type': msgList[1],
@@ -100,5 +99,4 @@ class IRC:
 
 if(__name__ == "__main__"):
 	s = sys.argv
-	print(str(s))
 	main( s[1], s[2], s[3], s[4], s[5] )
