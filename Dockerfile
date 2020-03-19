@@ -12,6 +12,7 @@ RUN addgroup --gid 3820 pythonuser && \
 
 VOLUME /opt/chat
 COPY --chown=pythonuser:pythonuser /irc_chat.py /opt
+COPY --chown=pythonuser:pythonuser /entrypoint.sh /
 
 RUN chmod 0775 /opt/irc_chat.py && chown pythonuser.pythonuser /opt/irc_chat.py && \
 	chmod -R 0777 /opt && chown pythonuser.pythonuser -R /opt/chat
