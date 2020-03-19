@@ -1,7 +1,7 @@
 import socket, ssl, re, json, sys
 
 def main(HOST, PORT, NICK, PASS, JOIN):
-	JOIN = json.loads(JOIN)
+	JOIN = JOIN.split(';')
 	
 	irc = IRC(HOST, int(PORT))
 	irc.connect(NICK, PASS)
