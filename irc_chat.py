@@ -16,12 +16,12 @@ def main(HOST, PORT, NICK, PASS, JOIN):
 		if('PRIVMSG' in msg):
 			msgList = irc.PRIVMSG(msg)
 			with open("/opt/chat/irc_PRIVMSG_{}.txt".format(msgList['room-name']), "a") as f:
-				f.write(str(msgList) + "\r\n")
+				f.write(json.dumps(str(msgList)) + "\r\n")
 		elif('USERNOTICE' in msg):
 			msgList = irc.USERNOTICE(msg)
 			print(msgList)
 			with open("/opt/chat/irc_USERNOTICE_{}.txt".format(msgList['room-name']), "a") as f:
-				f.write(str(msgList) + "\r\n")
+				f.write(json.dumps(str(msgList)) + "\r\n")
 	irc.send("PART #{channel}".format(channel=channel))
 
 class IRC:
