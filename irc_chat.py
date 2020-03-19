@@ -100,4 +100,5 @@ class IRC:
 
 if(__name__ == "__main__"):
 	s = sys.argv
+	print(str(s))
 	main( s[1], s[2], s[3], s[4], s[5] )
