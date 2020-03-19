@@ -46,6 +46,7 @@ class IRC:
 		while True:
 			msg = self.recv()
 			if("End of /NAMES list" in msg):
+				print("JOIN #{channel}".format(channel=channel))
 				break
 	def send(self, msg, charset = "UTF-8"):
 		return self.conn.send(bytes(msg + "\r\n", charset))
