@@ -10,11 +10,11 @@ ENV HOST="irc.chat.twitch.tv" \
 RUN addgroup --gid 3820 pythonuser && \
 	adduser --uid 3820 --ingroup pythonuser --disabled-password --gecos "" pythonuser
 
-VOLUME /opt
-COPY --chown=pythonuser:pythonuser /irc.py /
+VOLUME /opt/chat
+COPY --chown=pythonuser:pythonuser /irc_chat.py /opt
 
-RUN chmod 0775 /irc.py && chown pythonuser.pythonuser /irc.py && \
-	chmod -R 0777 /opt && chown pythonuser.pythonuser -R /opt
+RUN chmod 0775 /opt/irc_chat.py && chown pythonuser.pythonuser /opt/irc_chat.py && \
+	chmod -R 0777 /opt && chown pythonuser.pythonuser -R /opt/chat
 
 WORKDIR /opt
-ENTRYPOINT ["python3 /irc.py ${HOST} ${PORT} ${NICK} ${PASS} ${JOIN}"] 
+ENTRYPOINT ["python3 /opt/irc_chat.py ${HOST} ${PORT} ${NICK} ${PASS} ${JOIN}"] 
