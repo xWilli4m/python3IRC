@@ -15,12 +15,12 @@ def main(HOST, PORT, NICK, PASS, JOIN):
 			irc.send("PONG :tmi.twitch.tv")
 		if('PRIVMSG' in msg):
 			msgList = irc.PRIVMSG(msg)
-			with open("/home/python3alpine/_chats/irc_PRIVMSG_{}.txt".format(msgList['room-name']), "a") as f:
+			with open("/opt/irc_PRIVMSG_{}.txt".format(msgList['room-name']), "a") as f:
 				f.write(str(msgList) + "\r\n")
 		elif('USERNOTICE' in msg):
 			msgList = irc.USERNOTICE(msg)
 			print(msgList)
-			with open("/home/python3alpine/_chats/irc_USERNOTICE_{}.txt".format(msgList['room-name']), "a") as f:
+			with open("/opt/irc_USERNOTICE_{}.txt".format(msgList['room-name']), "a") as f:
 				f.write(str(msgList) + "\r\n")
 	irc.send("PART #{channel}".format(channel=channel))
 
