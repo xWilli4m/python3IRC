@@ -7,14 +7,14 @@ ENV HOST="irc.chat.twitch.tv" \
     PASS="" \
     JOIN=""
 
-RUN addgroup --gid 3820 python3alpine && \
-	adduser --uid 3820 --ingroup python3alpine --disabled-password --disabled-login --gecos "" python3alpine
+RUN addgroup --gid 3820 pythonuser && \
+	adduser --uid 3820 --ingroup pythonuser --disabled-password --gecos "" pythonuser
 
 VOLUME /opt
-COPY --chown=python3alpine:python3alpine /irc.py /
+COPY --chown=pythonuser:pythonuser /irc.py /
 
-RUN chmod 0775 /irc.py && chown python3alpine.python3alpine /irc.py && \
-	chmod -R 0777 /opt && chown python3alpine.python3alpine -R /opt
+RUN chmod 0775 /irc.py && chown pythonuser.pythonuser /irc.py && \
+	chmod -R 0777 /opt && chown pythonuser.pythonuser -R /opt
 
 WORKDIR /opt
 ENTRYPOINT ["python3 /irc.py ${HOST} ${PORT} ${NICK} ${PASS} ${JOIN}"] 
