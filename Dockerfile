@@ -17,4 +17,4 @@ RUN chmod 0775 /home/python3alpine/irc.py && chown python3alpine.python3alpine /
 	chmod -R 0777 /home/python3alpine/_chats && chown python3alpine.python3alpine -R /home/python3alpine/_chats
 
 WORKDIR /opt
-ENTRYPOINT ["python3 /home/python3alpine/irc.py"] 
+ENTRYPOINT ["python3 /home/python3alpine/irc.py ${HOST} ${PORT} ${NICK} ${PASS} ${JOIN}"] 
